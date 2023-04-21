@@ -30,6 +30,20 @@
 					</compilerArgs>
 				</configuration>
 			</plugin>
+
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>3.0.0</version>
+				<configuration>
+					<mainClass>org.test.vthreads.App</mainClass>
+					<environmentVariables>
+						<MAVEN_OPTS>--enable-preview</MAVEN_OPTS>
+					</environmentVariables>
+				</configuration>
+			</plugin>
+
 		</plugins>
 	</build>
 

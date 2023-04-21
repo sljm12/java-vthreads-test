@@ -3,12 +3,19 @@ package org.test.vthreads;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CountDownLatch;
 import java.util.stream.Collectors;
 
+import com.apptasticsoftware.rssreader.Item;
 import com.apptasticsoftware.rssreader.RssReader;
 
+/**
+ * RssProcessor to process each topic 
+ * @author stephenleejm
+ *
+ */
 public class RssProcessor implements Runnable{
 	private ConcurrentHashMap<String, ArrayList<String>> map;
 	private HashMap data;
@@ -32,7 +39,7 @@ public class RssProcessor implements Runnable{
 			map.get(name).add(s);
 			try {
 				
-				reader.read(s).collect(Collectors.toList());
+				List items= reader.read(s).collect(Collectors.toList());
 				System.out.println(String.join(",", name, s,"ok"));
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
